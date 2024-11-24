@@ -1,0 +1,42 @@
+﻿<Window x:Class="WPF06_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF06_"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding}" x:Name="ProductsList" HorizontalContentAlignment="Left" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid  Rows="5"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock  Text="{Binding Name}"/>
+                        <TextBlock >
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Count"/>
+                                    <Binding Path="Unit"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DockPanel Grid.Column="1">
+            <Button DockPanel.Dock="Top" Content="Добавить"   Click="Button_Add" Height="58"/>
+            <Button DockPanel.Dock="Top" Content="Редактировать"   Click="Button_Change" Height="62"/>
+            <Button DockPanel.Dock="Top" Content="Удалить"   Click="Button_Delete" Height="114"/>
+        </DockPanel>
+    </Grid>
+</Window>

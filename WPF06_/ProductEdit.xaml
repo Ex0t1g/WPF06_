@@ -1,0 +1,38 @@
+﻿<Window x:Class="WPF06_.ProductEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF06_"
+        mc:Ignorable="d"
+        Title="ProductEdit" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Название" Grid.Row="0"/>
+            <TextBox Text="{Binding Name}" Grid.Row="0" Grid.Column="1"/>
+            <Label Content="Колличество" Grid.Row="3"/>
+            <TextBox Text="{Binding Count}" Grid.Row="3" Grid.Column="1"/>
+            <Label Content="Измерения" Grid.Row="4"/>
+            <ComboBox Grid.Row="4" Grid.Column="1"  ItemsSource="{Binding AllUnits}" SelectedItem="{Binding Unit}"/>
+        </Grid>
+        <UniformGrid Grid.Row="1" Rows="1">
+            <Button Content="Отмена" Click="Button_Cancel"/>
+            <Button Content="Сохранить" Click="Button_Save"/>
+        </UniformGrid>
+    </Grid>
+</Window>
